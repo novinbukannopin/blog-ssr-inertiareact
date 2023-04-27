@@ -14,7 +14,12 @@ export default function Show({ article }) {
                 <Header.Subtitle>{article.teaser}</Header.Subtitle>
             </Header>
             <Container>
-                <Markdown>{article.body}</Markdown>
+                <div className="grid grid-cols-12 gap-16">
+                    <div className="col-span-9">
+                        <Markdown>{article.body}</Markdown>
+                    </div>
+                    <div className="col-span-3">lorem</div>
+                </div>
             </Container>
         </div>
     );

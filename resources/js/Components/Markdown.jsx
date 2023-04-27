@@ -1,11 +1,15 @@
-import React from "react";
 import hljs from "highlight.js";
 import { marked } from "marked";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function Markdown({ children }) {
     useEffect(() => {
-        hljs.highlightAll;
+        hljs.highlightAll();
     }, []);
-    return <div dangerouslySetInnerHTML={{ __html: marked(children) }} />;
+    return (
+        <div
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{ __html: marked(children) }}
+        />
+    );
 }

@@ -1,6 +1,6 @@
 /*!
-  Theme: XCode Dusk
-  Author: Elsa Gonsiorowski (https://github.com/gonsie)
+  Theme: Material Palenight
+  Author: Nate Peterson
   License: ~ MIT (or more permissive) [via base16-schemes-source]
   Maintainer: @highlightjs/core-team
   Version: 2021.09.0
@@ -8,30 +8,31 @@
 pre code.hljs {
     display: block;
     overflow-x: auto;
-    padding: 1em;
+    /* padding: 1em; */
 }
 code.hljs {
-    padding: 3px 5px;
+    /* padding: 3px 5px; */
 }
 .hljs {
-    color: #939599;
-    background: #282b35;
+    color: #959dcb;
+    /*background: #292d3e;*/
 }
+/*}*/
 .hljs ::selection,
 .hljs::selection {
-    background-color: #53555d;
-    color: #939599;
+    background-color: #32374d;
+    color: #959dcb;
 }
 .hljs-comment {
-    color: #686a71;
+    color: #676e95;
 }
 .hljs-tag {
-    color: #7e8086;
+    color: #8796b0;
 }
 .hljs-operator,
 .hljs-punctuation,
 .hljs-subst {
-    color: #939599;
+    color: #959dcb;
 }
 .hljs-operator {
     opacity: 0.7;
@@ -42,7 +43,7 @@ code.hljs {
 .hljs-selector-tag,
 .hljs-template-variable,
 .hljs-variable {
-    color: #b21889;
+    color: #f07178;
 }
 .hljs-attr,
 .hljs-link,
@@ -50,51 +51,51 @@ code.hljs {
 .hljs-number,
 .hljs-symbol,
 .hljs-variable.constant_ {
-    color: #786dc5;
+    color: #f78c6c;
 }
 .hljs-class .hljs-title,
 .hljs-title,
 .hljs-title.class_ {
-    color: #438288;
+    color: #ffcb6b;
 }
 .hljs-strong {
     font-weight: 700;
-    color: #438288;
+    color: #ffcb6b;
 }
 .hljs-addition,
 .hljs-code,
 .hljs-string,
 .hljs-title.class_.inherited__ {
-    color: #df0002;
+    color: #c3e88d;
 }
 .hljs-built_in,
 .hljs-doctag,
 .hljs-keyword.hljs-atrule,
 .hljs-quote,
 .hljs-regexp {
-    color: #00a0be;
+    color: #89ddff;
 }
 .hljs-attribute,
 .hljs-function .hljs-title,
 .hljs-section,
 .hljs-title.function_,
 .ruby .hljs-property {
-    color: #790ead;
+    color: #82aaff;
 }
 .diff .hljs-meta,
 .hljs-keyword,
 .hljs-template-tag,
 .hljs-type {
-    color: #b21889;
+    color: #c792ea;
 }
 .hljs-emphasis {
-    color: #b21889;
+    color: #c792ea;
     font-style: italic;
 }
 .hljs-meta,
 .hljs-meta .hljs-keyword,
 .hljs-meta .hljs-string {
-    color: #c77c48;
+    color: #ff5370;
 }
 .hljs-meta .hljs-keyword,
 .hljs-meta-keyword {
