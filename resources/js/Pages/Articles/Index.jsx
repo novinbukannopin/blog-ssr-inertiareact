@@ -1,19 +1,21 @@
-import React from "react";
 import App from "@/Layouts/App";
 import Header from "@/Components/Header";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import Container from "@/Components/Container";
 import Grid from "@/Components/Grid";
 import ArticleBlock from "@/Components/ArticleBlock";
+import Pagination from "@/Components/Pagination";
 
-export default function Home({ articles }) {
+export default function Index({ category, ...props }) {
+    const { data: articles, meta, links } = props.articles;
     return (
-        <div>
-            <Head title="Whats happening" />
+        <>
+            <Head title="The Articles" />
             <Header>
-                <Header.Title>Title coy</Header.Title>
-                <Header.Subtitle>ini subtitle</Header.Subtitle>
-                <Header.Content>content</Header.Content>
+                <Header.Title>Title</Header.Title>
+                <Header.Subtitle>
+                    read if you not sleepy
+                </Header.Subtitle>
             </Header>
             <Container>
                 {articles.length ? (
@@ -26,19 +28,13 @@ export default function Home({ articles }) {
                                 />
                             ))}
                         </Grid>
-                        <Link
-                            className="text-blue-600 block mt-10"
-                            href={route("articles.index")}
-                        >
-                            Show more articles
-                        </Link>
+                        <Pagination {...{ meta, links }} />
                     </>
                 ) : (
                     <p>No yet articles</p>
                 )}
             </Container>
-        </div>
+        </>
     );
 }
-
-Home.layout = (page) => <App children={page} />;
+Index.layout = (page) => <App children={page} />;

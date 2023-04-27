@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ArticleItemResource;
+use App\Http\Resources\ArticleSingleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ArticleController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function index()
     {
+
         $articles = Article::query()
             ->select('title', 'slug', 'user_id', 'teaser', 'created_at', 'id')
             ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
-            ->limit(9)
-            ->get();
-        // return ArticleItemResource::collection($articles);
-        return inertia('Home', [
+            ->latest()
+            ->fastPaginate();
+        return inertia('Articles/Index', [
             'articles' => ArticleItemResource::collection($articles)
+        ]);
+    }
+    public function Show(Article $article)
+    {
+        return inertia('Articles/Show', [
+            'article' => new ArticleSingleResource($article)
         ]);
     }
 }
