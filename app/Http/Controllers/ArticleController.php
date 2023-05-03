@@ -40,18 +40,23 @@ class ArticleController extends Controller
     public function Show(Article $article)
     {
         return inertia('Articles/Show', [
-            'article' => new ArticleSingleResource($article)
+            'article' => new ArticleSingleResource($article->load([
+                'tags' => fn ($query) => $query->select('name', 'slug'),
+                'category' => fn ($query) => $query->select('id', 'name', 'slug')
+            ]))
         ]);
     }
 
     public function store(Request $request)
     {
+        $picture = $request->file('picture');
         $article = $request->user()->articles()->create([
             'title' => $title = $request->title,
-            'slug' => str($title)->slug(),
+            'slug' => $slug = str($title)->slug(),
             'teaser' => $request->teaser,
             'category_id' => $request->category_id['id'],
-            'body' => $request->body
+            'body' => $request->body,
+            'picture' => $request->hasFile('picture') ? $picture->storeAs('images/article', $slug . '.' . $picture->extension()) : null
         ]);
 
         $article->tags()->attach($request->tags);
