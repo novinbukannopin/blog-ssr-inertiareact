@@ -3,7 +3,7 @@ import Header from "@/Components/Header";
 import Input from "@/Components/Input";
 import App from "@/Layouts/App";
 import { Head, useForm } from "@inertiajs/react";
-import { Inertia } from "@inertiajs/inertia";
+import { router } from "@inertiajs/react";
 import React from "react";
 import InputLabel from "@/Components/InputLabel";
 import InputFile from "@/Components/InputFile";
@@ -12,9 +12,10 @@ import Editor from "@/Components/Editor";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Select from "@/Components/Select";
 import MultipleSelect from "@/Components/MultipleSelect";
+import Button from "@/Components/Button";
 
 export default function Create({ tags, categories }) {
-    const { data, setData, errors } = useForm({
+    const { data, setData } = useForm({
         title: "",
         teaser: "",
         category_id: "",
@@ -25,7 +26,8 @@ export default function Create({ tags, categories }) {
     const onChange = (e) => setData(e.target.name, e.target.value);
     const onSubmit = (e) => {
         e.preventDefault();
-        Inertia.post(route("articles.store"), {
+
+        router.post(route("articles.store"), {
             ...data,
             category_id: data.category_id,
             tags: data.tags.map((t) => t.id),
@@ -107,7 +109,7 @@ export default function Create({ tags, categories }) {
                             value={data.body}
                         />
                     </div>
-                    <PrimaryButton>Create</PrimaryButton>
+                    <Button>Create</Button>
                 </form>
             </Container>
         </div>
